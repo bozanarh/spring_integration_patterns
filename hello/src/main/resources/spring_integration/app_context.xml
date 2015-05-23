@@ -15,13 +15,13 @@
 
 <int:channel id="requestChannel" />
 
-<int:channel id="respChannel">
+<int:channel id="responseChannel">
 	<int:queue capacity="10"/>
 </int:channel>
 
 <int:service-activator id="serviceActivator"
                 input-channel="requestChannel"
-                output-channel="respChannel" 
+                output-channel="responseChannel" 
                 ref="helloWorld" 
                 method="sayHello"/>
 

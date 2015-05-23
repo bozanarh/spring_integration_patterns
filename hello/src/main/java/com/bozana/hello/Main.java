@@ -17,7 +17,7 @@ public class Main {
         channel.send(message);
         
         
-        PollableChannel outputChannel = context.getBean("respChannel", PollableChannel.class);
+        PollableChannel outputChannel = context.getBean("responseChannel", PollableChannel.class);
         System.out.println("got: " + outputChannel.receive(0).getPayload());
         context.close();
 	}
