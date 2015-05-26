@@ -16,7 +16,6 @@ public class Main {
         Message<String> message = MessageBuilder.withPayload("Bozana").build();
         channel.send(message);
         
-        
         PollableChannel outputChannel = context.getBean("responseChannel", PollableChannel.class);
         System.out.println("got: " + outputChannel.receive(0).getPayload());
         context.close();
