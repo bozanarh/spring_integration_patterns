@@ -11,5 +11,5 @@
 * gateway's requestChannel is input into helloWorldSA (service activator)
 * There is also channel intercepter (see ChannelDebugger). It intercepts messages in the requestChannel.
 
-![alt tag](https://github.com/bozanarh/spring_integration_patterns/blob/master/helloWithGWAndSA/HelloWithGWAndSA.jpeg)
+![alt tag](https://github.com/bozanarh/spring_integration_patterns/blob/master/helloWithGWAndSA/helloWithGWAndSA.jpeg)
 
