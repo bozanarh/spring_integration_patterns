@@ -1,4 +1,4 @@
-## Hello world with P
+## Hello world with ServiceActivator
 
 * Ilustrates usage of service activator (HelloWorldImpl)
 * Service activator activates service when it receives a message in the requestCahnnel
