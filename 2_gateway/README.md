@@ -1,4 +1,4 @@
-## Hello world with EIP
+## Gateway Example
 
 * Using GW to achive lose coupling with spring integration (service activator). Instead of putting msg manually into the requestChannel, we call gateway interface. 
 * You define only interface for the gateway; it does not have implementation. (*Note: HelloWorldSA in this example does not implement HelloWorldsGW - it does not have to*)

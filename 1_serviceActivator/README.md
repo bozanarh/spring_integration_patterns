@@ -1,4 +1,4 @@
-## Hello world with ServiceActivator
+##  ServiceActivator Example
 
 * Illustrates usage of service activator (HelloWorldSA)
 * Service activator activates service when it receives a message in the requestChannel
