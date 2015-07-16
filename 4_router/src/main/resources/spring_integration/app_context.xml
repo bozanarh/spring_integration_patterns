@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-file="http://www.springframework.org/schema/integration/file"
+	xmlns:int-mail="http://www.springframework.org/schema/integration/mail"
+	xmlns:int-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+	http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+	http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+	http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml.xsd">
+
+
+	<int:channel id="requestChannel"/>
+	
+	<int:gateway id="helloWorld" 
+		service-interface="com.bozana.si.router.HelloWorldGW"
+		default-reply-channel="replyChannel" default-request-channel="requestChannel"/>
+	
+	<int:header-value-router input-channel="requestChannel" header-name="Language">
+		<int:mapping value="GERMAN" channel="germanInChannel" />
+		<int:mapping value="SERBIAN" channel="serbianInChannel" />
+	</int:header-value-router>
+
+	<int:channel id="replyChannel"/>
+	
+	<int:channel id="germanInChannel"/>
+	<int:channel id="serbianInChannel"/>
+	
+	<int:transformer output-channel="replyChannel" method="sayHello"
+		ref="germanTranslator" input-channel="germanInChannel"/>
+
+	<int:transformer output-channel="replyChannel" method="sayHello"
+		ref="serbianTranslator" input-channel="serbianInChannel"/>
+		
+	<bean id="germanTranslator" class="com.bozana.si.router.GermanTranslator"/>
+	<bean id="serbianTranslator" class="com.bozana.si.router.SerbianTranslator"/>
+
+</beans>
